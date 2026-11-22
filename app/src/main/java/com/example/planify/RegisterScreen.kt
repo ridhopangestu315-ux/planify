@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,6 +37,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,9 +50,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    onRegisterSuccess: () -> Unit = {},
+    onBackToLogin: () -> Unit = {}
+) {
     // State untuk input teks dan visibilitas password
     var fullName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -58,6 +65,14 @@ fun RegisterScreen() {
     var confirmPassword by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var confirmPasswordVisible by remember { mutableStateOf(false) }
+
+    // State untuk loading, error, dan sukses
+    var isLoading by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+    var successMessage by remember { mutableStateOf<String?>(null) }
+
+    val coroutineScope = rememberCoroutineScope()
+    val authRepository = remember { AuthRepository() }
 
     // Warna tema sesuai referensi
     val backgroundColor = Color(0xFFFAFCFF)
@@ -104,6 +119,31 @@ fun RegisterScreen() {
             }
 
             Spacer(modifier = Modifier.height(24.dp))
+
+            // Tampilkan pesan error jika ada
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage!!,
+                    color = Color.Red,
+                    fontSize = 14.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
+                )
+            }
+
+            // Tampilkan pesan sukses jika ada
+            if (successMessage != null) {
+                Text(
+                    text = successMessage!!,
+                    color = Color(0xFF16A34A),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
+                )
+            }
 
             // 3. Input Nama Lengkap
             InputFieldWithLabel(
@@ -154,19 +194,63 @@ fun RegisterScreen() {
 
             // 7. Tombol Daftar
             Button(
-                onClick = { /* Aksi Daftar */ },
+                onClick = {
+                    errorMessage = null
+                    successMessage = null
+
+                    when {
+                        fullName.isBlank() -> {
+                            errorMessage = "Nama lengkap tidak boleh kosong"
+                        }
+                        email.isBlank() -> {
+                            errorMessage = "Email tidak boleh kosong"
+                        }
+                        !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                            errorMessage = "Format email tidak valid"
+                        }
+                        password.length < 6 -> {
+                            errorMessage = "Password minimal 6 karakter"
+                        }
+                        password != confirmPassword -> {
+                            errorMessage = "Password dan konfirmasi password tidak sama"
+                        }
+                        else -> {
+                            isLoading = true
+                            coroutineScope.launch {
+                                val result = authRepository.registerUser(fullName, email, password)
+                                isLoading = false
+                                if (result.isSuccess) {
+                                    successMessage = "Akun berhasil dibuat! Mengalihkan..."
+                                    delay(1000L)
+                                    onRegisterSuccess()
+                                } else {
+                                    errorMessage = result.exceptionOrNull()?.localizedMessage ?: "Registrasi gagal. Silakan coba lagi."
+                                }
+                            }
+                        }
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
                 shape = RoundedCornerShape(15.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = buttonNavyColor)
+                colors = ButtonDefaults.buttonColors(containerColor = buttonNavyColor),
+                enabled = !isLoading
             ) {
-                Text(
-                    text = "Daftar",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
+                if (isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        color = Color.White,
+                        strokeWidth = 2.dp
+                    )
+                } else {
+                    Text(
+                        text = "Daftar",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -209,7 +293,8 @@ fun RegisterScreen() {
                     .height(52.dp),
                 shape = RoundedCornerShape(15.dp),
                 colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White),
-                border = androidx.compose.foundation.BorderStroke(1.dp, lightBlueBorder)
+                border = androidx.compose.foundation.BorderStroke(1.dp, lightBlueBorder),
+                enabled = !isLoading
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -252,7 +337,10 @@ fun RegisterScreen() {
                     color = textColor
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                TextButton(onClick = { /* Aksi ke Login */ }) {
+                TextButton(
+                    onClick = onBackToLogin,
+                    enabled = !isLoading
+                ) {
                     Text(
                         text = "Masuk sekarang",
                         fontSize = 14.sp,
