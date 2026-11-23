@@ -1,5 +1,6 @@
 package com.example.planify
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -41,16 +42,25 @@ class AktivitasUtama : AppCompatActivity() {
             Toast.makeText(this, "Menu Beranda", Toast.LENGTH_SHORT).show()
         }
         menuJadwal.setOnClickListener {
-            Toast.makeText(this, "Menu Jadwal", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasJadwal::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
         menuCatatan.setOnClickListener {
-            Toast.makeText(this, "Menu Catatan", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasCatatan::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
         menuKegiatan.setOnClickListener {
             Toast.makeText(this, "Menu Kegiatan", Toast.LENGTH_SHORT).show()
         }
         menuKalender.setOnClickListener {
-            Toast.makeText(this, "Menu Kalender", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasKalender::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
     }
 }

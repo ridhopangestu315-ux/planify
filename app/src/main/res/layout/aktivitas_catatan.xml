@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainCatatan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F8FC">
+
+    <!-- HEADER: CATATAN & PROFIL -->
+    <TextView
+        android:id="@+id/teksJudulCatatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Catatan"
+        android:textColor="#182B49"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/bingkaiProfilCatatan"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/latar_lingkaran_ikon"
+        app:layout_constraintBottom_toBottomOf="@+id/teksJudulCatatan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/teksJudulCatatan">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_person"
+            android:contentDescription="Profil" />
+    </FrameLayout>
+
+    <!-- DESKRIPSI -->
+    <TextView
+        android:id="@+id/teksDeskripsiCatatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:text="Simpan ide dan materi kuliahmu"
+        android:textColor="#71819A"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teksJudulCatatan" />
+
+    <!-- KOLOM PENCARIAN -->
+    <LinearLayout
+        android:id="@+id/layoutPencarian"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/latar_kolom_pencarian"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teksDeskripsiCatatan">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_search"
+            android:contentDescription="Cari" />
+
+        <EditText
+            android:id="@+id/etCariCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:background="@null"
+            android:hint="Cari catatan..."
+            android:inputType="text"
+            android:textColor="#182B49"
+            android:textColorHint="#94A3B8"
+            android:textSize="14sp"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <!-- FILTER CATATAN -->
+    <TextView
+        android:id="@+id/teksLabelTerbaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Terbaru"
+        android:textColor="#182B49"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPencarian" />
+
+    <LinearLayout
+        android:id="@+id/layoutFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teksLabelTerbaru">
+
+        <TextView
+            android:id="@+id/filterSemua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/latar_filter_aktif"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="8dp"
+            android:text="Semua"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/filterTerkini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/latar_filter_tidak_aktif"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="8dp"
+            android:text="Terkini"
+            android:textColor="#182B49"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- EMPTY STATE -->
+    <LinearLayout
+        android:id="@+id/tataLetakKosongCatatan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/latar_kegiatan_kosong"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigasiBawahCatatan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFilter">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum ada catatan"
+            android:textColor="#182B49"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Mulai dari catatan paling penting hari ini."
+            android:textColor="#71819A"
+            android:textSize="14sp"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <!-- RECYCLER VIEW DAFTAR CATATAN -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCatatan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/navigasiBawahCatatan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFilter" />
+
+    <!-- FLOATING ACTION BUTTON (TAMBAH CATATAN) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/tombolTambahCatatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#294A78"
+        android:contentDescription="Tambah Catatan"
+        android:src="@drawable/ic_add"
+        app:tint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/navigasiBawahCatatan"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- BOTTOM NAVIGATION (NAVIGASI BAWAH) -->
+    <LinearLayout
+        android:id="@+id/navigasiBawahCatatan"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="@drawable/latar_navigasi_bawah"
+        android:elevation="12dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Menu 1: Beranda -->
+        <LinearLayout
+            android:id="@+id/menuBerandaCatatan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Beranda" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Beranda"
+                android:textColor="#71819A"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Menu 2: Jadwal -->
+        <LinearLayout
+            android:id="@+id/menuJadwalCatatan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Jadwal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Jadwal"
+                android:textColor="#71819A"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Menu 3: Catatan (Aktif) -->
+        <LinearLayout
+            android:id="@+id/menuCatatanCatatan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/latar_menu_terpilih"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_note"
+                android:contentDescription="Catatan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Catatan"
+                android:textColor="#294A78"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Menu 4: Kegiatan -->
+        <LinearLayout
+            android:id="@+id/menuKegiatanCatatan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_checklist"
+                android:contentDescription="Kegiatan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Kegiatan"
+                android:textColor="#71819A"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Menu 5: Kalender -->
+        <LinearLayout
+            android:id="@+id/menuKalenderCatatan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_calendar_days"
+                android:contentDescription="Kalender" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Kalender"
+                android:textColor="#71819A"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

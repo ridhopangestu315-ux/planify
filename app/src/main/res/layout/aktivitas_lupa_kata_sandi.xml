@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLupaSandi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F8FC">
+
+    <!-- BACKGROUND DEKORATIF GELOMBANG BAWAH -->
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/latar_gelombang_bawah"
+        android:contentDescription="Dekorasi Gelombang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- HEADER: TOMBOL KEMBALI & JUDUL PLANIFY -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <ImageButton
+                    android:id="@+id/tombolKembali"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_arrow_back"
+                    android:contentDescription="Kembali" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Planify"
+                    android:textColor="#182B49"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <!-- ILUSTRASI -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_email_lock"
+                android:contentDescription="Ilustrasi Lupa Kata Sandi" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <!-- JUDUL -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Lupa Kata Sandi?"
+                android:textColor="#182B49"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <!-- DESKRIPSI -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Masukkan email akun kamu. Kami akan mengirimkan tautan untuk mengatur ulang kata sandi."
+                android:textColor="#71819A"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <!-- PESAN ERROR / SUKSES -->
+            <TextView
+                android:id="@+id/teksPesanLupaSandi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:textColor="#DC2626"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <!-- KOLOM EMAIL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/latar_kolom_email"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_email"
+                    android:contentDescription="Ikon Email" />
+
+                <EditText
+                    android:id="@+id/etEmailLupaSandi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:background="@null"
+                    android:hint="Masukkan email akun kamu"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#182B49"
+                    android:textColorHint="#94A3B8"
+                    android:textSize="14sp"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <!-- TOMBOL KIRIM KODE VERIFIKASI -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <Button
+                    android:id="@+id/tombolKirimKode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#194477"
+                    android:text="Kirim Tautan Reset"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarLupaSandi"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@android:color/white"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

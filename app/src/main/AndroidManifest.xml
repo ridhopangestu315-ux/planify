@@ -35,9 +35,45 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Forgot Password Activity -->
+        <activity
+            android:name=".AktivitasLupaKataSandi"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- OTP Verification Activity -->
+        <activity
+            android:name=".AktivitasVerifikasiOtp"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Reset Password Activity -->
+        <activity
+            android:name=".AktivitasAturUlangKataSandi"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Dashboard Activity -->
         <activity
             android:name=".AktivitasUtama"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Schedule Activity -->
+        <activity
+            android:name=".AktivitasJadwal"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Notes Activity -->
+        <activity
+            android:name=".AktivitasCatatan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Calendar Activity -->
+        <activity
+            android:name=".AktivitasKalender"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
