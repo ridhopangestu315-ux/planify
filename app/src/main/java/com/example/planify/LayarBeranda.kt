@@ -18,32 +18,33 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Komponen KepalaBeranda menampilkan sapaan kepada pengguna di bagian atas dashboard.
+ */
 @Composable
-fun DashboardHeader() {
-    // Warna tema Planify (Navy dan Putih/Biru Terang)
-    val navyColor = Color(0xFF0F172A)
-    val whiteColor = Color(0xFFFFFFFF)
-    val lightBlueColor = Color(0xFF93C5FD)
+fun KepalaBeranda() {
+    val warnaNavy = Color(0xFF0F172A)
+    val warnaPutih = Color(0xFFFFFFFF)
+    val warnaBiruTerang = Color(0xFF93C5FD)
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(navyColor)
+            .background(warnaNavy)
             .padding(24.dp),
     ) {
-        // Baris untuk sapaan dan nama pengguna
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = "Selamat Datang,",
-                color = lightBlueColor,
+                color = warnaBiruTerang,
                 fontSize = 16.sp,
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
                 text = "Ridho",
-                color = whiteColor,
+                color = warnaPutih,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
             )
@@ -51,10 +52,9 @@ fun DashboardHeader() {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Teks singkat penyemangat
         Text(
             text = "Siap menyelesaikan kegiatan hari ini?",
-            color = whiteColor,
+            color = warnaPutih,
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
         )
@@ -63,6 +63,6 @@ fun DashboardHeader() {
 
 @Preview(showBackground = true)
 @Composable
-fun DashboardHeaderPreview() {
-    DashboardHeader()
+fun PratinjauKepalaBeranda() {
+    KepalaBeranda()
 }
