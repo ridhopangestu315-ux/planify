@@ -33,7 +33,8 @@ class AktivitasJadwal : AppCompatActivity() {
 
         // Setup Tombol Tambah Jadwal
         binding.tombolTambahJadwal.setOnClickListener {
-            Toast.makeText(this, "Tambah jadwal baru", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasFormTambahJadwal::class.java)
+            startActivity(intent)
         }
 
         // Setup Navigasi Bawah (Bottom Navigation)
@@ -96,7 +97,10 @@ class AktivitasJadwal : AppCompatActivity() {
         }
 
         binding.menuKegiatanJadwal.setOnClickListener {
-            Toast.makeText(this, "Menu Kegiatan", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasKegiatan::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
 
         binding.menuKalenderJadwal.setOnClickListener {

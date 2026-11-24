@@ -65,15 +65,81 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Add Schedule Form Activity -->
+        <activity
+            android:name=".AktivitasFormTambahJadwal"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Notes Activity -->
         <activity
             android:name=".AktivitasCatatan"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Add Note Form Activity -->
+        <activity
+            android:name=".AktivitasFormTambahCatatan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Calendar Activity -->
         <activity
             android:name=".AktivitasKalender"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Activities Activity -->
+        <activity
+            android:name=".AktivitasKegiatan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Add Activity Form Activity -->
+        <activity
+            android:name=".AktivitasFormTambahKegiatan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Profile Activity -->
+        <activity
+            android:name=".AktivitasProfil"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Personal Info Activity -->
+        <activity
+            android:name=".AktivitasInformasiPribadi"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Notification Hub Activity -->
+        <activity
+            android:name=".AktivitasPengaturanNotifikasi"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Notification Schedule Settings Activity -->
+        <activity
+            android:name=".AktivitasNotifikasiJadwal"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Notification Activity Settings Activity -->
+        <activity
+            android:name=".AktivitasNotifikasiKegiatan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Display Preference Activity -->
+        <activity
+            android:name=".AktivitasTampilan"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Language Preference Activity -->
+        <activity
+            android:name=".AktivitasBahasa"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 

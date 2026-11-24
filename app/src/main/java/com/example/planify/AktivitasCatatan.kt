@@ -123,11 +123,17 @@ class AktivitasCatatan : AppCompatActivity() {
         }
 
         binding.menuKegiatanCatatan.setOnClickListener {
-            Toast.makeText(this, "Menu Kegiatan", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasKegiatan::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
 
         binding.menuKalenderCatatan.setOnClickListener {
-            Toast.makeText(this, "Menu Kalender", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasKalender::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
     }
 

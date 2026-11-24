@@ -2,12 +2,15 @@ package com.example.planify
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.planify.databinding.BottomSheetTambahBaruBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
@@ -25,10 +28,17 @@ class AktivitasUtama : AppCompatActivity() {
             insets
         }
 
+        // Tombol profil di header untuk membuka halaman Profil
+        val bingkaiProfil = findViewById<FrameLayout>(R.id.bingkaiProfil)
+        bingkaiProfil.setOnClickListener {
+            val intent = Intent(this, AktivitasProfil::class.java)
+            startActivity(intent)
+        }
+
         // Mengambil tombol tambah dari layout
         val tombolTambah = findViewById<FloatingActionButton>(R.id.tombolTambah)
         tombolTambah.setOnClickListener {
-            Toast.makeText(this, "Tambah kegiatan baru", Toast.LENGTH_SHORT).show()
+            tampilkanBottomSheetTambahBaru()
         }
 
         // Mengambil komponen menu navigasi bawah dari layout
@@ -54,7 +64,10 @@ class AktivitasUtama : AppCompatActivity() {
             finish()
         }
         menuKegiatan.setOnClickListener {
-            Toast.makeText(this, "Menu Kegiatan", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AktivitasKegiatan::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
         }
         menuKalender.setOnClickListener {
             val intent = Intent(this, AktivitasKalender::class.java)
@@ -62,5 +75,35 @@ class AktivitasUtama : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun tampilkanBottomSheetTambahBaru() {
+        val dialog = BottomSheetDialog(this)
+        val viewBinding = BottomSheetTambahBaruBinding.inflate(layoutInflater)
+        dialog.setContentView(viewBinding.root)
+
+        viewBinding.tombolTutupBottomSheet.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        viewBinding.kartuTambahKegiatan.setOnClickListener {
+            dialog.dismiss()
+            val intent = Intent(this, AktivitasFormTambahKegiatan::class.java)
+            startActivity(intent)
+        }
+
+        viewBinding.kartuTambahJadwal.setOnClickListener {
+            dialog.dismiss()
+            val intent = Intent(this, AktivitasFormTambahJadwal::class.java)
+            startActivity(intent)
+        }
+
+        viewBinding.kartuBuatCatatan.setOnClickListener {
+            dialog.dismiss()
+            val intent = Intent(this, AktivitasFormTambahCatatan::class.java)
+            startActivity(intent)
+        }
+
+        dialog.show()
     }
 }
