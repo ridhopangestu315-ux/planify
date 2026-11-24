@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainFormTambahCatatan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F9FD"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="36dp">
+
+        <!-- HEADER -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/tombolKembaliFormCatatan"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Kembali" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Tambah Catatan"
+                android:textColor="#172443"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- JUDUL CATATAN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Judul Catatan *"
+            android:textColor="#172443"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/latar_kotak_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_note"
+                android:contentDescription="Dokumen" />
+
+            <EditText
+                android:id="@+id/etJudulCatatan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:hint="Materi PCD"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="#172443"
+                android:textColorHint="#94A3B8"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- ISI CATATAN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Isi Catatan"
+            android:textColor="#172443"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/latar_kotak_input"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_pencil"
+                android:contentDescription="Pensil" />
+
+            <EditText
+                android:id="@+id/etIsiCatatan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="Tulis ide, materi, atau catatan penting di sini..."
+                android:inputType="textMultiLine"
+                android:textColor="#172443"
+                android:textColorHint="#94A3B8"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- KATEGORI -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Kategori"
+            android:textColor="#172443"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/layoutDropdownKategoriCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/latar_kotak_input"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:id="@+id/ikonGridCatatan"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_checklist"
+                android:contentDescription="Grid" />
+
+            <TextView
+                android:id="@+id/teksKategoriCatatanTerpilih"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/ikonGridCatatan"
+                android:text="Pilih kategori"
+                android:textColor="#94A3B8"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_chevron_down"
+                android:contentDescription="Panah" />
+        </RelativeLayout>
+
+        <!-- WARNA / LABEL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Warna / Label"
+            android:textColor="#172443"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Warna 1: Biru (Default aktif) -->
+            <FrameLayout
+                android:id="@+id/kotakWarna1"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#DBEAFE" />
+
+                <ImageView
+                    android:id="@+id/centangWarna1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+            <!-- Warna 2: Hijau Muda -->
+            <FrameLayout
+                android:id="@+id/kotakWarna2"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#DCFCE7" />
+
+                <ImageView
+                    android:id="@+id/centangWarna2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+            <!-- Warna 3: Ungu Muda -->
+            <FrameLayout
+                android:id="@+id/kotakWarna3"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F3E8FF" />
+
+                <ImageView
+                    android:id="@+id/centangWarna3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+            <!-- Warna 4: Kuning Muda -->
+            <FrameLayout
+                android:id="@+id/kotakWarna4"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEF08A" />
+
+                <ImageView
+                    android:id="@+id/centangWarna4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+            <!-- Warna 5: Merah Muda -->
+            <FrameLayout
+                android:id="@+id/kotakWarna5"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FEE2E2" />
+
+                <ImageView
+                    android:id="@+id/centangWarna5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+            <!-- Warna 6: Biru Cyan -->
+            <FrameLayout
+                android:id="@+id/kotakWarna6"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/latar_kotak_input"
+                android:padding="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#CFFAFE" />
+
+                <ImageView
+                    android:id="@+id/centangWarna6"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/latar_avatar_profil"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Centang" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <!-- PENTING -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Penting"
+            android:textColor="#172443"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="#E3EAF5"
+            app:strokeWidth="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iconBookmark"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_bookmark"
+                    android:contentDescription="Bookmark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/iconBookmark"
+                    android:text="Tandai sebagai catatan penting"
+                    android:textColor="#172443"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchCatatanPenting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:checked="false"
+                    app:thumbTint="#FFFFFF"
+                    app:trackTint="#3B82F6" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <!-- TOMBOL SIMPAN CATATAN -->
+        <Button
+            android:id="@+id/tombolSimpanCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="#172443"
+            android:text="Simpan Catatan"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
